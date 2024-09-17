@@ -4,79 +4,101 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { useState } from "react";
 import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
 } from "@/components/ui/popover";
 
 export const Widget = () => {
-    const [rating, setRating] = useState(3);
+  const [rating, setRating] = useState(3);
+  const [submitted, setSubmitted] = useState(false);
 
-    const onSelectStar = (index) => {
-        setRating(index + 1);
-    };
+  const onSelectStar = (index) => {
+    setRating(index + 1);
+  };
 
-    return (
-     <div className="fixed bottom-4 right-4 z-50">
-        <Popover>
-            <PopoverTrigger asChild>
-                <Button className="rounded-full shadow-lg
-                hover:scale-105">Feedback</Button>
-            </PopoverTrigger>
-            <PopoverContent>
-                <div>
-                    <h3 className="text-lg font-bold">Send us your feedback</h3>
-                    <form className="space-y-2">
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="space-y-2">
-                                <Label htmlFor="name">Name</Label>
-                                <Input
-                                id="name"
-                                placeholder="Enter your name"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <Label htmlFor="email">Email</Label>
-                                <Input
-                                id="email"
-                                type="email"
-                                placeholder="Enter your email"
-                                />
-                            </div>
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="feedback">Feedback</Label>
-                            <Input 
-                            id="feedback" 
-                            placeholder="Tell us what you think"
-                            className="min-h-[100px]"
-                            />
-                        </div>
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-2">
-                                {[...Array(5)].map((_, index) => (
-                                    <StarIcon
-                                        key={index}
-                                        className={`h-5 w-5 cursor-pointer ${
-                                            rating > index ? "fill-primary" :
-                                            "fill-muted stroke-muted-foreground"
-                                        }`}
-                                        onClick={() => onSelectStar(index)}
-                                    />
-                                ))}
-                            </div>
-                            <Button type="submit">Submit</Button>
-                        </div>
-                    </form>
+  const submit = (e) => {
+    e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    feedback: form.feedback.value,
+    rating,
+  };
+  setSubmitted(true);
+  console.log(data);
+}
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50">
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button className="rounded-full shadow-lg
+          hover:scale-105">Feedback</Button>
+        </PopoverTrigger>
+        <PopoverContent>
+          { submitted ? (<div>
+            <h3 className="text-lg font-bold">Thank you for your feedback
+            </h3>
+            <p className="mt-4">Your feedback helps us improve our product 
+              and provide better updates to our customers.</p>
+          </div>): <div>
+            <h3 className="text-lg font-bold">Send us your feedback</h3>
+            <form 
+              className="space-y-2" 
+              onSubmit={submit}
+              >
+               <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Name</Label>
+                  <Input
+                  id="name"
+                  placeholder="Enter your name"
+                  />
                 </div>
-            </PopoverContent>   
-        </Popover>
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                  id="email"
+                  type="email"
+                  placeholder="Enter your email"
+                  />
+                </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="feedback">Feedback</Label>
+                  <Input 
+                  id="feedback" 
+                  placeholder="Tell us what you think"
+                  className="min-h-[100px]"
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  {[...Array(5)].map((_, index) => (
+                    <StarIcon
+                      key={index}
+                      className={`h-5 w-5 cursor-pointer ${
+                      rating > index ? "fill-primary" :
+                      "fill-muted stroke-muted-foreground"
+                    }`}
+                    onClick={() => onSelectStar(index)}
+                     />
+                  ))}
+                </div>
+                <Button type="submit">Submit</Button>
+              </div>
+            </form>
+          </div> }
+        </PopoverContent>   
+      </Popover>
     </div>
-    );
+  );
 };
 
 function StarIcon(props) {
-    return (
+return (
         <svg 
             {...props}
             xmlns="http://www.w3.org/2000/svg" 
