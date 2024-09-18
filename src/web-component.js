@@ -14,7 +14,8 @@ class WidgetWebComponent extends HTMLElement {
   connectedCallback() {
     const props = this.getPropsFromAttributes();
     const root = ReactDom.createRoot(this.shadowRoot);
-    root.render(<Widget {...props} />);
+    root.render(React.createElement(Widget, props));
+
   }
 
   getPropsFromAttributes() {
@@ -26,4 +27,4 @@ class WidgetWebComponent extends HTMLElement {
   }
 }
 
-export default WidgetWebComponent
+export default WidgetWebComponent;

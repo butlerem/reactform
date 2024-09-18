@@ -8,11 +8,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import tailwindStyles from "../index.css?inline"
 
 export const Widget = () => {
   const [rating, setRating] = useState(3);
   const [submitted, setSubmitted] = useState(false);
-
   const onSelectStar = (index) => {
     setRating(index + 1);
   };
@@ -31,14 +31,17 @@ export const Widget = () => {
 }
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <>
+    <style {...tailwindStyles}></style>
+    <div className="widget fixed bottom-4 right-4 z-50">
       <Popover>
         <PopoverTrigger asChild>
           <Button className="rounded-full shadow-lg
           hover:scale-105">
             <MessageIcon className="mr-2 h-4.5 w-4.5"/>Feedback</Button>
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent className="widget rounded-lg bg-card p-4 shawow-lg w-full max-w-md">
+        <style {...tailwindStyles}></style>
           { submitted ? (<div>
             <h3 className="text-lg font-bold">Thank you for your feedback
             </h3>
@@ -95,6 +98,7 @@ export const Widget = () => {
         </PopoverContent>   
       </Popover>
     </div>
+    </>
   );
 };
 
