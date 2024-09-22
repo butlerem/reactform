@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-      <Widget></Widget>
+      <Widget projectId="1" />
     </>
   )
 }
