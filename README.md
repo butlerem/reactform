@@ -1,4 +1,4 @@
-### Feedback Widget
+# Feedback Widget
 
 This repository contains the code for the embeddable feedback collection widget. The widget can be integrated into any website, allowing users to collect feedback from visitors easily.
 
