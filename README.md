@@ -9,7 +9,7 @@ This repository contains the code for the embeddable feedback collection widget.
 - Collects and submits feedback securely to the main SaaS backend.
 - Fully responsive and works across all device sizes.
 - Minimal impact on page performance.
-- 
+  
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e7d6f3e5-2c7a-4e65-902c-8a07d246b3e2)
   
 # How to Use
