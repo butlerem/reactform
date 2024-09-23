@@ -12,7 +12,7 @@ This repository contains the code for the embeddable feedback collection widget.
   
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/e7d6f3e5-2c7a-4e65-902c-8a07d246b3e2)
   
-# How to Use
+## How to Use
 
 You can include the widget in your website by adding the following script tag in your HTML:
 ```
@@ -31,7 +31,7 @@ Customize the appearance of the widget by passing in configuration options. Exam
 ```
 Once the script is included in your website, the widget will automatically appear at the configured position.
 
-# Configuration Options
+## Configuration Options
 
 projectId (required): The unique ID of the project to which the feedback belongs.
 buttonColor: The color of the widget button (default: #36485c).
@@ -40,27 +40,27 @@ position: The position of the widget on the screen ('bottom-right', 'bottom-left
 Development
 To run the widget locally and make changes:
 
-# Clone the repository
+## Clone the repository
 ```
 git clone https://github.com/your-username/widget-repo-name.git
 cd widget-repo-name
 ```
-# Install dependencies
+## Install dependencies
 ```
 npm install
 ```
-# Run the development server
+## Run the development server
 ```
 npm run dev
 ```
 Open http://localhost:3000 in your browser to see the widget in action.
 
-# Building for Production
+## Building for Production
 To build the widget for production:
 ```
 npm run build
 ```
 This will create a minified version of the widget that can be hosted on a CDN.
 
-# License
+## License
 This project is licensed under the MIT License.
